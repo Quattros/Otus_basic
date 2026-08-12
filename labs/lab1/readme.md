@@ -132,6 +132,15 @@ Switch#
     - Установлен пароль на line conscol и vty. Все пароли зашифрованы.
     - Прописана команда no shutdown для vlan 1
     - Включено подключение через telnet.
+
+####	Настройте IP-адрес для ПК.
+
+- Для ПК установлен IP-адрес согласно ТЗ.
+![](pc_ip_addres.png)
+
+### Часть 3. Проверка сетевых подключений
+
+- Отображения конфигурации устройства
 ```
 sw1(config-if)#do show run
 Building configuration...
@@ -229,6 +238,34 @@ line vty 5 15
 !
 end
 ```
-####	Настройте IP-адрес для ПК.
 
-- Для ПК установлен IP-адрес согласно ТЗ.
+- Тест сквозного соединения по запросу ping 192.168.1.2 c PC-A
+
+```
+C:\>ping 192.168.1.2
+
+Pinging 192.168.1.2 with 32 bytes of data:
+
+Reply from 192.168.1.2: bytes=32 time<1ms TTL=255
+Reply from 192.168.1.2: bytes=32 time<1ms TTL=255
+Reply from 192.168.1.2: bytes=32 time<1ms TTL=255
+Reply from 192.168.1.2: bytes=32 time<1ms TTL=255
+
+Ping statistics for 192.168.1.2:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+```
+
+- Тест удаленного управления с помощью Telnet
+```
+  Trying 192.168.1.2 ...Open
+
+
+User Access Verification
+
+Password: 
+sw1>enable
+Password: 
+sw1#
+```
