@@ -240,3 +240,75 @@ S2#
   Internet Address      Physical Address      Type
   192.168.1.12          000d.bd8d.a61e        dynamic
 ```
+
+- Отправка эхо-запроса с PC-B на PC-A и коммутатор S1
+
+```
+C:\>ping 192.168.1.1
+
+Pinging 192.168.1.1 with 32 bytes of data:
+
+Reply from 192.168.1.1: bytes=32 time<1ms TTL=128
+Reply from 192.168.1.1: bytes=32 time<1ms TTL=128
+Reply from 192.168.1.1: bytes=32 time<1ms TTL=128
+Reply from 192.168.1.1: bytes=32 time<1ms TTL=128
+
+Ping statistics for 192.168.1.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\>ping 192.168.1.11
+
+Pinging 192.168.1.11 with 32 bytes of data:
+
+Reply from 192.168.1.11: bytes=32 time=17ms TTL=255
+Reply from 192.168.1.11: bytes=32 time<1ms TTL=255
+Reply from 192.168.1.11: bytes=32 time<1ms TTL=255
+Reply from 192.168.1.11: bytes=32 time<1ms TTL=255
+
+Ping statistics for 192.168.1.11:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 17ms, Average = 4ms
+
+C:\>
+```
+
+- Проверка MAC-адресов на коммутаторе S2 и arp таблица на PC-B
+
+```
+C:\>telnet 192.168.1.12
+Trying 192.168.1.12 ...Open
+
+
+User Access Verification
+
+Password: 
+S2>sho
+S2>show mac
+S2>show mac-add
+S2>show mac-address-table 
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+
+   1    000a.4184.1e01    DYNAMIC     Fa0/1
+   1    0040.0bbc.c7ee    DYNAMIC     Fa0/1
+   1    00d0.5884.bdae    DYNAMIC     Fa0/18
+   1    00d0.ba2b.2d01    DYNAMIC     Fa0/1
+S2>
+S2>ex
+
+[Connection to 192.168.1.12 closed by foreign host]
+C:\>arp -a
+  Internet Address      Physical Address      Type
+  192.168.1.1           000a.4184.1e01        dynamic
+  192.168.1.11          0040.0bbc.c7ee        dynamic
+  192.168.1.12          000d.bd8d.a61e        dynamic
+
+C:\>
+```
+
