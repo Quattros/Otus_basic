@@ -179,3 +179,9 @@ end
 MAC-адреса PC-A PC-B
 
 ![](mac-addres-pc.png)
+
+MAC-адреса S1 S2
+
+![](mac-addres-com.png)
+
+
