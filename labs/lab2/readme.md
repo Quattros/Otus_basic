@@ -43,7 +43,7 @@ ___________________________________________________________
 
 ## Часть 1.4 Настройте базовые параметры каждого коммутатора. 
 
-   1. Коммутатор 1. (Неиспользованные порты удалены в тексте для более удобного чтения)
+Коммутатор 1. (Неиспользованные порты удалены в тексте для более удобного чтения).
 
 ```
 C:\>telnet 192.168.1.11
@@ -92,8 +92,6 @@ interface Vlan1
  ip address 192.168.1.11 255.255.255.0
 !
 !
-!
-!
 line con 0
  password 7 0822455D0A16
  login
@@ -108,4 +106,69 @@ line vty 5 15
 end
 ```
 
+Коммутатор 2. ((Неиспользованные порты удалены в тексте для более удобного чтения).
+
+```
+C:\>telnet 192.168.1.12
+Trying 192.168.1.12 ...Open
+
+
+User Access Verification
+
+Password: 
+S2>enable
+Password: 
+S2#show
+S2#show run
+S2#show running-config 
+Building configuration...
+
+Current configuration : 1241 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname S2
+!
+enable secret 5 $1$mERr$9cTjUIEqNGurQiFU.ZeCi1
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+!
+...
+!
+interface FastEthernet0/18
+!
+...
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 192.168.1.12 255.255.255.0
+!
+!
+line con 0
+ password 7 0822455D0A16
+ login
+!
+line vty 0 4
+ password 7 0822455D0A16
+ login
+ transport input telnet
+line vty 5 15
+ login
+ transport input telnet
+!
+!
+end
+```
 
