@@ -184,4 +184,59 @@ MAC-адреса S1 S2
 
 ![](mac-addres-com.png)
 
+### Шаг 2. Просмотрите таблицу МАС-адресов коммутатора.
 
+Таблица MAC-адресов коммутатор S2
+```
+S2#show mac-ass
+S2#show mac-add
+S2#show mac-address-table 
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+
+   1    00d0.5884.bdae    DYNAMIC     Fa0/18
+   1    00d0.ba2b.2d01    DYNAMIC     Fa0/1
+S2#
+```
+### Шаг 3. Очистите таблицу MAC-адресов коммутатора S2 и сново отобразите таблицу MAC-адресов.
+
+Быстрая очистка таблицы и вывод информации в консоль. Спустя 10 секунд повторный вывод таблицы MAC-адресов.
+
+```
+S2#
+S2#cle
+S2#clear mac
+S2#clear mac add
+S2#clear mac address-table dyn
+S2#clear mac address-table dynamic 
+S2#show mac-address-table 
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+
+   1    00d0.5884.bdae    DYNAMIC     Fa0/18
+S2#show mac-address-table 
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+
+   1    00d0.5884.bdae    DYNAMIC     Fa0/18
+   1    00d0.ba2b.2d01    DYNAMIC     Fa0/1
+S2#
+```
+
+### Шаг 4. С компьютера PC-B отправьте эхо-запросы устройствам в сети и просмотрите таблицу МАС-адресов коммутатора.
+
+- Выполнение команды arp -a
+```
+ C:\>arp -a
+  Internet Address      Physical Address      Type
+  192.168.1.12          000d.bd8d.a61e        dynamic
+```
