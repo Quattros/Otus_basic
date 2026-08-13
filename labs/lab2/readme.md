@@ -28,14 +28,84 @@
    - Назначьте class в качестве пароля доступа к привилегированному режиму EXEC.
   
 ## Часть 2. Изучение таблицы MAC-адресов коммутатора. 
+___________________________________________________________
 
-
-##Часть 1.1 Подключение сети в соответствии с топологией 
+## Часть 1.1 Подключение сети в соответствии с топологией 
 
    ![](topology_lab.png)
 
 ## Часть 1.2 Настройте узлы ПК
 
-   ![]()
+   ![](pc1pc2.png)
 
-   
+## Часть 1.3
+   Коммутаторы проинициализированы и перезагружены. Настроено подключение через telnet. 
+
+## Часть 1.4 Настройте базовые параметры каждого коммутатора. 
+
+   1. Коммутатор 1. (Неиспользованные порты удалены в тексте для более удобного чтения)
+
+```
+C:\>telnet 192.168.1.11
+Trying 192.168.1.11 ...Open
+
+
+User Access Verification
+
+Password: 
+S1>
+S1>
+S1>show run
+        ^
+% Invalid input detected at '^' marker.
+	
+S1>enable
+Password: 
+S1#show run
+S1#show running-config 
+Building configuration...
+
+Current configuration : 1193 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname S1
+!
+enable secret 5 $1$mERr$9cTjUIEqNGurQiFU.ZeCi1
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+...
+interface FastEthernet0/6
+...
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 192.168.1.11 255.255.255.0
+!
+!
+!
+!
+line con 0
+ password 7 0822455D0A16
+ login
+!
+line vty 0 4
+ password 7 0822455D0A16
+ login
+line vty 5 15
+ login
+!
+!
+end
+```
+
+
