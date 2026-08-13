@@ -275,7 +275,7 @@ Approximate round trip times in milli-seconds:
 C:\>
 ```
 
-- Проверка MAC-адресов на коммутаторе S2 и arp таблица на PC-B
+- Проверка MAC-адресов на коммутаторе S2 и ARP=таблица на PC-B
 
 ```
 C:\>telnet 192.168.1.12
