@@ -93,6 +93,6 @@
 
 ### Задача 3.
 
-![](problen3.png)
+![](problem3.png)
 
 
