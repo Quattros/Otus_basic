@@ -95,4 +95,16 @@
 
 ![](problem3.png)
 
+### Задача 4.
+
+![](problem4.png)
+
+### Задача 5.
+
+![](problem5.png)
+
+### Задача 6.
+
+![](problem6.png)
+
 
